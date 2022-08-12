@@ -1,0 +1,49 @@
+<div class="jiqnz-container shadow" *ngIf="jiqnz">
+    <div class="row">
+        <div class="col-lg-1 col-md-12 p-1">
+            <img class="rounded-circle p-1 small shadow" src="{{jiqnz.by.profileURL}}" />
+        </div>
+        <div class="col-lg-8 col-md-12 ms-3">
+            <a href="https://twitter.com/{{jiqnz.by.username}}">
+                <span>{{jiqnz.by.name}}</span>
+            </a>
+            <div class="fw-lighter">{{jiqnzCreatedAt}}</div>
+        </div>
+        <div class="col-12">
+            <div class="d-flex flex-row-reverse">
+                <button type="button" class="btn btn-secondary" (click)="jiqnzLiked.emit(jiqnz)">
+                    <span class="me-2 pointer">
+                        <fa-icon [icon]="heart"></fa-icon>
+                    </span>
+                    <span>{{jiqnz.likedBy.length}}</span>
+                </button>
+                <button type="button" class="btn btn-primary me-2" (click)="jiqnzCommented.emit(jiqnz)">
+                    <span class="me-2 pointer">
+                        <fa-icon [icon]="commentIcon"></fa-icon>
+                    </span>
+                    <span class="me-2">{{jiqnz.commentedBy.length}}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 jiqnz">
+            {{jiqnz.content}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="single-comment" *ngFor="let comment of comments">
+                <div class="comment-container">
+                    <hr>
+                    <div class="comment-content">
+                        {{comment.comment}}
+                    </div>
+                    <div class="comment-author">
+                        {{comment.displayName}} - {{comment.createdFormat}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<app-header></app-header>
+<ng-container *ngIf="user$ | async as user else notLoggedTimeLine">
+  <div class="container">
+    <app-new-jiqnz [user]="user" (newJiqnz)="addNewJiqnz($event)"></app-new-jiqnz>
+    <div class="row container p-3 center">
+      <div class="col-lg-3 col-md-12">
+        <div class="mb-3">
+          <app-profile [user]="user"></app-profile>
+        </div>
+      </div>
+      <div class="col-lg-9 col-md-12">
+        <div class="timeline">
+          <app-timeline (jiqnzLiked)="onJiqnzLike($event)" (jiqnzCommented)="onJiqnzComment($event)"
+            *ngFor="let jiqnz of jiqnz;" [jiqnz]="jiqnz"></app-timeline>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-template #notLoggedTimeLine>
+  <div class="mt-3 timeline">
+    <app-timeline *ngFor="let jiqnz of jiqnz;" [jiqnz]="jiqnz"></app-timeline>
+  </div>
+</ng-template>

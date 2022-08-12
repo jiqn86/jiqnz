@@ -1,0 +1,10 @@
+<nav class="navbar bg-dark">
+    <div class="container">
+        <a class="navbar-brand text-white" href="#">jiqnz!</a>
+        <div class="d-flex flex-row-reverse" id="navbarSupportedContent">
+            <button class="btn btn-outline-primary" type="submit"
+                (click)="isLoggedIn ? logoutUser() : loginUser()">{{isLoggedIn ? 'LogOut' : 'LogIn'}}
+            </button>
+        </div>
+    </div>
+</nav>
